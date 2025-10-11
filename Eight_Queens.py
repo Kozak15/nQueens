@@ -50,3 +50,11 @@ def check_equiv(s1 , s2):
 simple_list_of_solutions = ['15863724', '16837425', '24683175', '25713864', 
                             '25741863', '26174835', '26831475', '27368514', 
                             '27581463', '35281746', '35841726', '36258174'] 
+def solveNqueens(n):#for 1<= n <= 9. I will upload no restrictions in the future
+    s,lst = ''.join([str(i) for i in range(1,n+1)]),[]
+    for item in itertools.permutations(s):
+        ans = ''.join(item)
+        if check(ans):
+            if not any(val in lst for val in [ans,rotate90(ans),rotate180(ans),rotate270(ans)]):
+                lst.append(ans)      
+    return lst,len(lst)
