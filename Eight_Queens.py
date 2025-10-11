@@ -5,6 +5,8 @@ def check(s):
                 if abs(int(s[i]) - int(s[j])) == abs(j - i):
                     return False
     return True
+#A solution is represented by a string. Say
+#First character is 1, there is a queen on A1
 full_list_of_solutions = [
     '15863724', '16837425', '17468253', '17582463', '24683175', 
     '25713864', '25741863', '26174835', '26831475', '27368514',
