@@ -37,7 +37,8 @@ def rotate_90(s):
 def rotate_180(s):
     return rotate_90(rotate_90(s))
 def rotate_270(s):
-    return rotate_90(rotate_180(s))
+    return rotate_90(rotate_90(rotate_90(s)))
+    #rotate_90(rotate_180(s)) works as well but its less funny
 def reflect(s):
     ans = ""
     for n in s:
