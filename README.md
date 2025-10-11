@@ -1,2 +1,2 @@
-# Eight-Queens
-An iterative brute force solution to the 8 queens problem
+# nQueens
+An iterative brute force solution to the nQueens problem for 1<= n <= 9
