@@ -28,25 +28,28 @@ full_list_of_solutions = [
     '74258136', '74286135', '75316824', '82417536', '82531746',
     '83162574', '84136275'
 ]
-def rotate_90(s):
+def rotate_90(s,n):
     ans = ""
     lst = list(s)
     for i in range(1 , len(lst)+1):
-        ans += str(8- lst.index(str(i)))
+        ans += str(n- lst.index(str(i)))
     return ans
-def rotate_180(s):
-    return rotate_90(rotate_90(s))
-def rotate_270(s):
-    return rotate_90(rotate_90(rotate_90(s)))
+def rotate_180(s,n):
+    return rotate_90(rotate_90(s,n),n)
+def rotate_270(s,n):
+    return rotate_90(rotate_180(s,n),n)
     #rotate_90(rotate_180(s)) works as well but its less funny
-def reflect(s):
+def reflect(s,n):
     ans = ""
-    for n in s:
-        ans += str(9 - int(n))
+    for tn in s:
+        ans += str(n+1 - int(tn))
     return ans
 def check_equiv(s1 , s2):
-    ref = reflect(s1)
-    return s2 == rotate_90(s1) or s2 == rotate_180(s1) or s2 == rotate_270(s1) or s2 == ref or s2 == rotate_90(ref) or s2 == rotate_180(ref) or s2 == rotate_270(ref)
+    ref = reflect(s1, n)
+    return any(s2 == t
+        for t in [rotate_90(s1, n),rotate_180(s1, n),rotate_270(s1, n),ref,
+                rotate_90(ref, n),rotate_180(ref, n),rotate_270(ref, n),])
+    
 simple_list_of_solutions = ['15863724', '16837425', '24683175', '25713864', 
                             '25741863', '26174835', '26831475', '27368514', 
                             '27581463', '35281746', '35841726', '36258174'] 
@@ -55,6 +58,7 @@ def solveNqueens(n):#for 1<= n <= 9. I will upload no restrictions in the future
     for item in itertools.permutations(s):
         ans = ''.join(item)
         if check(ans):
-            if not any(val in lst for val in [ans,rotate90(ans),rotate180(ans),rotate270(ans)]):
+            if not any(val in lst for val in [ans,rotate90(ans,n),rotate180(ans,n),rotate270(ans,n)]):
                 lst.append(ans)      
     return lst,len(lst)
+
