@@ -1,5 +1,5 @@
 import itertools
-def check(s):
+def check(s):#Takes in a string of numbers
     for i in range(len(s)):
             for j in range(i+1 ,len(s)):
                 if abs(int(s[i]) - int(s[j])) == abs(j - i):
@@ -61,4 +61,5 @@ def solveNqueens(n):#for 1<= n <= 9. I will upload no restrictions in the future
             if not any(val in lst for val in [ans,rotate90(ans,n),rotate180(ans,n),rotate270(ans,n)]):
                 lst.append(ans)      
     return lst,len(lst)
+
 
